@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from kivy.app import App
 
 class AApp(App):
