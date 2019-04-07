@@ -8,17 +8,16 @@ from kivy.graphics import (Color, Ellipse, Rectangle, Line)
 
 # we create a non primitive widget in here
 class PaintWidget(Widget): 
-    def __init__(self, **kwargs):
-        super(PaintWidget, self).__init__(**kwargs)
+
+    def on_touch_down(self, touch):
         with self.canvas:
             Color(0,1,0,1)
-            self.line = Line(points=(), width=10)
-
-    # def on_touch_down(self, touch):
-    #     self.line.points += (touch.x, touch.y)
+            rad = 30
+            Ellipse(pos=(touch.x - rad/2, touch.y - rad/2), size=(rad,rad))
+            touch.ud['line'] = Line(points=(touch.x, touch.y), width=rad/2 )
 
     def on_touch_move(self, touch):
-        self.line.points += (touch.x, touch.y)
+        touch.ud['line'].points += (touch.x, touch.y)
 
 # we must have at least one app with the build method defined
 class Paint(App):
