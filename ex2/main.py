@@ -12,7 +12,7 @@ class PaintWidget(Widget):
         super(PaintWidget, self).__init__(**kwargs)
         with self.canvas:
             Color(0,1,0,1)
-            Ellipse(pos=(100,100),size=(100,100))
+            Line(points=(100,100, 200,200 , 200,150),close=True)
 
 # we must have at least one app with the build method defined
 class Paint(App):
