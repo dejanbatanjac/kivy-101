@@ -1,6 +1,7 @@
 from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.widget import Widget
+from kivy.core.window import Window
 from kivy.graphics import (Color, Ellipse, Rectangle, Line)
 
 # widgets are GUI elements (primitive as well non primitive), 
@@ -31,7 +32,10 @@ class Paint(App):
         return parent
 
     def save(self, instance):
-        self.painter.export_to_png("image.png")
+        # print(Window.size)
+
+        self.painter.size = Window.size
+        self.painter.parent.export_to_png("image.png")
 
         
     def clear(self, instance):
