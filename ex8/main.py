@@ -6,6 +6,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.widget import Widget
 from kivy.lang import Builder
 from kivy.uix.anchorlayout import AnchorLayout
+from functools import partial
 
 
 # testing the anchor layout with box layout
@@ -37,7 +38,8 @@ class Calc(App):
     # add on click for every button in gl
     def add_on_press(self, gl):
         for c in gl.children:             
-            c.bind(on_press=self.append_text)
+            c.bind(on_press=partial(self.append_text))
+            
 
 
     def build(self):
